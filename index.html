@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Converge-Reveal — Live Preview</title>
+	<meta name="description" content="Live preview of the Converge-Reveal Elementor widget: a scroll-driven collection reveal. Scroll down to see it.">
+
+	<!-- The widget's own stylesheet and script, exactly as the plugin ships them -->
+	<link rel="stylesheet" href="converge-reveal/assets/css/reveal.css">
+	<script src="converge-reveal/assets/js/reveal.js" defer></script>
+
+	<style>
+		:root {
+			--bg: #f6f2ec;
+			--ink: #1d1a17;
+			--muted: #7a7168;
+			--accent: #b0603f;
+		}
+
+		@media (prefers-color-scheme: dark) {
+			:root {
+				--bg: #16130f;
+				--ink: #f1ebe2;
+				--muted: #a39a8f;
+				--accent: #e0916f;
+			}
+		}
+
+		*, *::before, *::after { box-sizing: border-box; }
+
+		html { scroll-behavior: auto; }
+
+		body {
+			margin: 0;
+			background: var(--bg);
+			color: var(--ink);
+			font-family: system-ui, -apple-system, "Segoe UI", Roboto, Tahoma, sans-serif;
+			line-height: 1.5;
+		}
+
+		.demo-section {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			min-height: 100svh;
+			padding: 48px 24px;
+			text-align: center;
+		}
+
+		.demo-kicker {
+			margin: 0 0 16px;
+			font-size: 13px;
+			letter-spacing: 0.18em;
+			text-transform: uppercase;
+			color: var(--accent);
+		}
+
+		.demo-section h1 {
+			margin: 0 0 16px;
+			font-size: clamp(36px, 7vw, 84px);
+			font-weight: 500;
+			line-height: 1.05;
+		}
+
+		.demo-section p {
+			max-width: 520px;
+			margin: 0;
+			color: var(--muted);
+		}
+
+		.demo-scroll {
+			margin-top: 48px;
+			font-size: 13px;
+			color: var(--muted);
+			animation: demo-bob 1.8s ease-in-out infinite;
+		}
+
+		@keyframes demo-bob {
+			50% { transform: translateY(8px); }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.demo-scroll { animation: none; }
+		}
+
+		.demo-toggle {
+			position: fixed;
+			inset-block-end: 16px;
+			inset-inline-end: 16px;
+			z-index: 10;
+			padding: 8px 14px;
+			border: 1px solid var(--muted);
+			border-radius: 999px;
+			background: var(--bg);
+			color: var(--ink);
+			font: inherit;
+			font-size: 13px;
+			cursor: pointer;
+		}
+
+		.demo-toggle:focus-visible {
+			outline: 2px solid var(--accent);
+			outline-offset: 2px;
+		}
+
+		/* Widget style controls from the plugin, as plain CSS in this demo */
+		.mdc-reveal__title {
+			font-size: clamp(40px, 4vw, 64px);
+			letter-spacing: -0.01em;
+		}
+
+		.mdc-reveal__item-title {
+			font-size: 18px;
+		}
+
+		.mdc-reveal__item:hover .mdc-reveal__image {
+			filter: saturate(1.15) brightness(1.03);
+		}
+	</style>
+</head>
+<body>
+
+	<section class="demo-section">
+		<p class="demo-kicker">Elementor widget</p>
+		<h1>Converge-Reveal</h1>
+		<p>A scroll-driven collection reveal. The title fades while the cards slide in from both sides and converge into a grid.</p>
+		<span class="demo-scroll" aria-hidden="true">Scroll down &darr;</span>
+	</section>
+
+	<!-- Widget markup, identical to what the plugin renders -->
+	<div class="mdc-reveal-wrap mdc-reveal-wrap--animated mdc-reveal-wrap--clip mdc-reveal-wrap--m-fx">
+		<div class="mdc-reveal" style="--mdc-count:4;">
+			<a class="mdc-reveal__item mdc-reveal__item--start" style="--mdc-i:0;--mdc-s:-1;" href="#floor">
+				<img class="mdc-reveal__image" src="demo/floor.svg" alt="" width="410" height="640" loading="lazy" decoding="async">
+				<h3 class="mdc-reveal__item-title">Floor</h3>
+			</a>
+			<a class="mdc-reveal__item mdc-reveal__item--start" style="--mdc-i:1;--mdc-s:1;" href="#wall">
+				<img class="mdc-reveal__image" src="demo/wall.svg" alt="" width="410" height="640" loading="lazy" decoding="async">
+				<h3 class="mdc-reveal__item-title">Wall</h3>
+			</a>
+			<h2 class="mdc-reveal__title">New Collection</h2>
+			<a class="mdc-reveal__item mdc-reveal__item--end" style="--mdc-i:2;--mdc-s:-1;" href="#kitchen">
+				<img class="mdc-reveal__image" src="demo/kitchen.svg" alt="" width="410" height="640" loading="lazy" decoding="async">
+				<h3 class="mdc-reveal__item-title">Kitchen</h3>
+			</a>
+			<a class="mdc-reveal__item mdc-reveal__item--end" style="--mdc-i:3;--mdc-s:1;" href="#outdoor">
+				<img class="mdc-reveal__image" src="demo/outdoor.svg" alt="" width="410" height="640" loading="lazy" decoding="async">
+				<h3 class="mdc-reveal__item-title">Outdoor</h3>
+			</a>
+		</div>
+	</div>
+
+	<section class="demo-section">
+		<p class="demo-kicker">That's it</p>
+		<h1>Fully editable in Elementor</h1>
+		<p>Every text, image, link, color, spacing and effect is a control in the widget panel. Works in LTR and RTL, with a dedicated effect for mobile.</p>
+	</section>
+
+	<button class="demo-toggle" type="button" id="dir-toggle" aria-label="Toggle text direction">Switch to RTL</button>
+
+	<script>
+		( function () {
+			var button = document.getElementById( 'dir-toggle' );
+			button.addEventListener( 'click', function () {
+				var rtl = document.documentElement.dir === 'rtl';
+				document.documentElement.dir = rtl ? 'ltr' : 'rtl';
+				button.textContent = rtl ? 'Switch to RTL' : 'Switch to LTR';
+			} );
+		}() );
+	</script>
+</body>
+</html>
